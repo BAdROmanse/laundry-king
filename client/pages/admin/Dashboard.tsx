@@ -287,7 +287,7 @@ export default function Dashboard() {
                       <strong>Service:</strong> {item.service_type}
                     </div>
                     <div>
-                      <strong>Date:</strong> {formatDateTime(item.created_at)}
+                      <strong>Date:</strong> {formatPHDateTime(item.created_at)}
                     </div>
                   </div>
                   <div className="su-right">
