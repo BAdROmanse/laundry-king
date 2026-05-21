@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
 import { apiFetch } from "@/lib/api";
+import { formatPHDateTime } from "@/lib/date";
 import {
   PAYMENT_STATUSES,
   normalizePaymentMethod,
@@ -42,15 +43,6 @@ function formatTodayLabel() {
     month: "long",
     day: "numeric",
     year: "numeric",
-  });
-}
-
-function formatDateTime(iso: string) {
-  return new Date(iso).toLocaleString("en-PH", {
-    month: "short",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
   });
 }
 

@@ -1,6 +1,7 @@
 import { toast } from "sonner";
 import { useEffect, useMemo, useState } from "react";
 import { apiFetch } from "@/lib/api";
+import { formatPHDateTime } from "@/lib/date";
 import {
   fetchExpenses,
   syncInventoryExpense,
@@ -628,7 +629,7 @@ export default function Inventory() {
                 expenses.slice(0, 10).map((expense, index) => (
                   <tr key={`${expense.created_at}-${index}`}>
                     <td>
-                      {new Date(expense.created_at).toLocaleString("en-PH")}
+                      {formatPHDateTime(expense.created_at)}
                     </td>
                     <td>{expense.type}</td>
                     <td>{expense.detail}</td>

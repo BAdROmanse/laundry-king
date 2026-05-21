@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { apiFetch } from "@/lib/api";
+import { formatPHDateTime } from "@/lib/date";
 import {
   PAYMENT_METHODS,
   PAYMENT_STATUSES,
@@ -99,16 +100,6 @@ function getRange(filter: FilterKey) {
       return { from: s(m), to: e(en) };
     }
   }
-}
-
-function formatDateTime(iso: string) {
-  return new Date(iso).toLocaleString("en-PH", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
 }
 
 export default function ATransactions() {
@@ -339,7 +330,7 @@ export default function ATransactions() {
                         ? `\u20b1${row.total_cost.toLocaleString()}`
                         : "-"}
                     </td>
-                    <td>{formatDateTime(row.created_at)}</td>
+                    <td>{formatPHDateTime(row.created_at)}</td>
                     <td>
                       {row.payment_status === "Paid" &&
                       row.order_status === "For Delivery" ? (

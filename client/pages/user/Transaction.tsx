@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { normalizePaymentMethod, normalizePaymentStatus } from "@/lib/payments";
+import { formatPHDateTime } from "@/lib/date";
 import UserSidebar from "../../components/UserSidebar";
 import { TopbarUser } from "./shared";
 import "../../styles/globals.css";
@@ -16,17 +17,6 @@ interface Order {
   weight: number | null;
   total_cost: number | null;
   created_at: string;
-}
-
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleString("en-PH", {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
 }
 
 const WasherIcon = () => (
@@ -222,7 +212,7 @@ export default function Transaction() {
                         {`#${order.id.slice(0, 8).toUpperCase()} - ${order.service_type} - ${order.pack_type}`}
                       </span>
                       <span className="transaction-item__date">
-                        {formatDate(order.created_at)}
+                        {formatPHDateTime(order.created_at)}
                       </span>
                       <span className="transaction-item__date">
                         Payment Method:{" "}

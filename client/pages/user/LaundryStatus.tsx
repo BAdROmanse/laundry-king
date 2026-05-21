@@ -10,6 +10,7 @@ import { useEffect, useState, JSX } from "react";
 import React from "react";
 import { Link } from "wouter";
 import { supabase } from "@/lib/supabase";
+import { formatPHDateTime } from "@/lib/date";
 import { normalizePaymentMethod, normalizePaymentStatus } from "@/lib/payments";
 import UserSidebar from "@/components/UserSidebar";
 
@@ -235,17 +236,6 @@ export default function LaundryStatus() {
   // ── FIXED: status values now capitalized to match DB
   const activeStep = (order?.status ?? "Washing") as StepName;
 
-  function formatDate(iso: string) {
-    return new Date(iso).toLocaleString("en-PH", {
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  }
-
   const orderDetails = order
     ? [
         { label: "Order No:", value: `#${order.id.slice(0, 8).toUpperCase()}` },
@@ -253,7 +243,7 @@ export default function LaundryStatus() {
         { label: "Service Type:", value: order.service_type },
         { label: "Clothes:", value: order.pack_type ?? "—" },
         { label: "Delivery Mode:", value: order.delivery_mode },
-        { label: "Date Ordered:", value: formatDate(order.created_at) },
+        { label: "Date Ordered:", value: formatPHDateTime(order.created_at) },
         {
           label: "Order Status:",
           value: <span className="status-badge">In Progress</span>,

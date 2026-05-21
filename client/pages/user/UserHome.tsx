@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { supabase } from "@/lib/supabase";
+import { formatPHDateTime } from "@/lib/date";
 import UserSidebar from "../../components/UserSidebar";
 import { TopbarUser, WasherIcon, TshirtIcon, Order } from "./shared";
 import "../../styles/globals.css";
@@ -131,14 +132,7 @@ export default function UserHome() {
                       {order.delivery_type ?? "Pickup"}
                     </span>
                     <span className="purchase-item__date">
-                      {new Date(order.created_at).toLocaleString("en-PH", {
-                        weekday: "long",
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric",
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      })}
+                      {formatPHDateTime(order.created_at)}
                     </span>
                   </div>
                   <div className="purchase-item__action">
