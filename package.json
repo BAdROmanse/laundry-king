@@ -4,6 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:server": "npx tsx server/index.ts",
+    "dev:all": "npx concurrently \"npm run dev\" \"npm run dev:server\"",
     "build": "npm run build:client && npm run build:server",
     "build:client": "vite build",
     "build:server": "vite build --config vite.config.server.ts",
@@ -13,8 +15,10 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.105.1",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
+    "wouter": "^3.9.0",
     "zod": "^3.25.76"
   },
   "devDependencies": {
@@ -62,6 +66,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
+    "concurrently": "^9.2.1",
     "cors": "^2.8.5",
     "date-fns": "^4.1.0",
     "embla-carousel-react": "^8.6.0",

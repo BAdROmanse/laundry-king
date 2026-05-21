@@ -1,6 +1,8 @@
 /** @import must precede all other statements */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
 
+@import "./styles/globals.css"; /* ← ADD THIS LINE */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -85,7 +87,12 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Satoshi', -apple-system, Roboto, Helvetica, sans-serif;
+    font-family:
+      "Satoshi",
+      -apple-system,
+      Roboto,
+      Helvetica,
+      sans-serif;
   }
 
   :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
@@ -102,9 +109,20 @@
 
 /* Brand font classes */
 .font-makira {
-  font-family: 'Playfair Display', 'Satoshi', -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    "Playfair Display",
+    "Satoshi",
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
 }
 
 .font-satoshi {
-  font-family: 'Satoshi', -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    "Satoshi",
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
 }
