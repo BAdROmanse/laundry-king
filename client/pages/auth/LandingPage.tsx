@@ -61,11 +61,13 @@ export default function LandingPage() {
       {/* ── ABOUT ── */}
       <section className="lp-about" id="about">
         <div className="lp-about__inner">
-          <h2 className="lp-about__title">What is Laundry King?</h2>
+          <h2 className="lp-about__title">
+            Get to know more about Laundry King!
+          </h2>
           <p className="lp-about__sub">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim.
+            Laundry King is a laundry service provider that attracts clients
+            with its superior, quick, and reliable service Since its founding in
+            2024, the company has thrived and flourished.
           </p>
 
           <div className="lp-about__features">
@@ -75,10 +77,8 @@ export default function LandingPage() {
               </div>
               <h3 className="lp-feature__title">King Quality Service</h3>
               <p className="lp-feature__desc">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
+                Receive and enjoy your garments fresh and fragrant with Laundry
+                King's effective and careful wash, dry and fold process.
               </p>
             </div>
 
@@ -91,8 +91,9 @@ export default function LandingPage() {
               </div>
               <h3 className="lp-feature__title">Fast and Reliable</h3>
               <p className="lp-feature__desc">
-                Receive your garments a day after order confirmation. Rushed
-                orders are accepted and get your order within the day.
+                Wait no more with our laundry service! Receive your garments a
+                day after your order confirmation or avail our rushed service to
+                get them within the day.
               </p>
             </div>
 
@@ -105,10 +106,9 @@ export default function LandingPage() {
               </div>
               <h3 className="lp-feature__title">Convenient</h3>
               <p className="lp-feature__desc">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
+                Don't want to pick up your laundry? No problem! Laundry King
+                offers delivery service and allows customers to pick their
+                desired mode of claiming.
               </p>
             </div>
           </div>
@@ -120,9 +120,9 @@ export default function LandingPage() {
         <div className="lp-services__inner">
           <h2 className="lp-services__title">We Offer Various Services</h2>
           <p className="lp-services__sub">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim.
+            Receive and enjoy your garments fresh and fragrant with Laundry
+            King's effective wash, dry, fold, rushed, pickup, and delivery
+            services.
           </p>
 
           <div className="lp-services__grid">
