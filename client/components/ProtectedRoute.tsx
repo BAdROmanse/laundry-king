@@ -48,12 +48,22 @@ function LoadingScreen() {
 
 // ── Shared role checker ───────────────────────────────────────
 async function getUserRole(userId: string): Promise<string> {
-  const { data: profile } = await supabase
-    .from("users")
-    .select("role")
-    .eq("id", userId)
-    .single();
-  return profile?.role ?? "customer";
+  try {
+    const roleQuery = supabase
+      .from("users")
+      .select("role")
+      .eq("id", userId)
+      .maybeSingle();
+
+    const timeout = new Promise<{ data: null }>((resolve) => {
+      window.setTimeout(() => resolve({ data: null }), 5000);
+    });
+
+    const { data: profile } = await Promise.race([roleQuery, timeout]);
+    return profile?.role ?? "customer";
+  } catch {
+    return "customer";
+  }
 }
 
 // ── ProtectedRoute — any logged-in user ───────────────────────
@@ -83,6 +93,7 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
       }
       // If admin tries to access a user route, send them to admin dashboard
       const role = await getUserRole(session.user.id);
+      if (!mounted) return;
       if (role === "admin") {
         navigate("/admin/dashboard");
         return;
@@ -110,6 +121,7 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
         return;
       }
       const role = await getUserRole(session.user.id);
+      if (!mounted) return;
       if (role === "admin") {
         navigate("/admin/dashboard");
         return;

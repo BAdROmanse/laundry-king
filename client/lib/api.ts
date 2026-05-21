@@ -12,3 +12,18 @@ export async function apiFetch(input: RequestInfo | URL, init: RequestInit = {})
 
   return fetch(input, { ...init, headers });
 }
+
+export async function apiFetchWithTimeout(
+  input: RequestInfo | URL,
+  init: RequestInit = {},
+  timeoutMs = 10000,
+) {
+  const controller = new AbortController();
+  const timeoutId = window.setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    return await apiFetch(input, { ...init, signal: controller.signal });
+  } finally {
+    window.clearTimeout(timeoutId);
+  }
+}

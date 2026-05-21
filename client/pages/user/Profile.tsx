@@ -3,7 +3,7 @@ import { toast } from "sonner";
 import { useEffect, useState } from "react";
 import UserSidebar from "../../components/UserSidebar";
 import { useCurrentUser } from "../../hooks/use-current-user";
-import { apiFetch } from "../../lib/api";
+import { apiFetchWithTimeout } from "../../lib/api";
 import { TopbarUser, getInitials } from "./shared";
 import "../../styles/globals.css";
 
@@ -91,7 +91,7 @@ export default function Profile() {
   useEffect(() => {
     if (!user) return;
     setLoading(true);
-    apiFetch(`/api/profile/${user.id}`)
+    apiFetchWithTimeout(`/api/profile/${user.id}`)
       .then((r) => {
         if (!r.ok) throw new Error(`Server error ${r.status}`);
         return r.json();
@@ -132,7 +132,7 @@ export default function Profile() {
     setSuccess(false);
 
     try {
-      const res = await apiFetch(`/api/profile/${user.id}`, {
+      const res = await apiFetchWithTimeout(`/api/profile/${user.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
